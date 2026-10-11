@@ -13,14 +13,17 @@
 :root{--paper:#fff8f3;--rose:#a34e68;--rose-dark:#74394d;--rose-soft:#f3d9dc;--ink:#513c43;--gold:#bd9a59;--line:#e9c7c9;--sans:"DM Sans",Arial,sans-serif;--serif:"Playfair Display",Georgia,serif;--script:"Great Vibes",cursive}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--paper)}
+body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url("nursery-pattern.jpg") center top/ min(78vw,390px) auto repeat;opacity:.20}
+.section:after{content:"";position:absolute;z-index:-2;inset:0;pointer-events:none;background-image:url("floral-side-strips.jpg");background-repeat:repeat-y;background-size:76px auto;background-position:left top;opacity:.23}
+.section:nth-of-type(even):after{transform:scaleX(-1)}
 body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.7;overflow-x:hidden}
 button,a{font:inherit}
 button{cursor:pointer}
 #cover{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;overflow:hidden;background:#f9e6e4;transition:opacity 1.1s ease,visibility 1.1s ease}
 #cover.leaving{opacity:0;visibility:hidden;pointer-events:none}
-.cover-art{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}
-.cover-wash{position:absolute;inset:0;background:linear-gradient(180deg,rgba(255,245,239,.04),rgba(255,245,239,.02) 65%,rgba(255,245,239,.16))}
-.cover-open{position:absolute;left:50%;bottom:max(4vh,calc(env(safe-area-inset-bottom) + 18px));transform:translateX(-50%);width:min(88%,390px);border:0;background:rgba(255,248,241,.95);color:var(--rose-dark);padding:15px 20px;border-radius:999px;box-shadow:0 10px 28px #7d35442b;letter-spacing:.04em;font-weight:700;animation:buttonBreathe 2.7s ease-in-out infinite}
+.cover-art,.cover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}.cover-video{z-index:1;background:#fffaf7}
+.cover-wash{position:absolute;z-index:2;inset:0;background:linear-gradient(180deg,rgba(255,245,239,.02),rgba(255,245,239,0) 62%,rgba(255,245,239,.28))}
+.cover-open{position:absolute;z-index:3;left:50%;bottom:max(5vh,calc(env(safe-area-inset-bottom) + 22px));transform:translateX(-50%);width:min(88%,420px);border:1px solid rgba(164,91,111,.45);background:rgba(255,249,245,.94);color:var(--rose-dark);padding:17px 20px;border-radius:18px;box-shadow:0 10px 28px #7d35442b;letter-spacing:.035em;font-family:var(--serif);font-size:clamp(18px,4.8vw,25px);font-weight:700;animation:buttonBreathe 2.7s ease-in-out infinite;backdrop-filter:blur(4px)}
 .cover-open:focus-visible,.btn:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
 .cover-open span{display:block;font-size:12px;letter-spacing:.16em;margin-top:2px;font-weight:600}
 @keyframes buttonBreathe{0%,100%{transform:translateX(-50%) scale(1);box-shadow:0 10px 28px #7d35442b}50%{transform:translateX(-50%) scale(1.025);box-shadow:0 14px 35px #7d35443d}}
@@ -65,9 +68,13 @@ p{font-size:clamp(17px,3.8vw,20px);font-weight:500;line-height:1.8;margin:14px 0
 .flower-corner{position:absolute;width:clamp(62px,12vw,110px);opacity:.72;pointer-events:none;animation:flowerSway 6s ease-in-out infinite}
 .flower-corner.left{left:0;top:22px}.flower-corner.right{right:0;bottom:15px;animation-delay:-3s}
 @keyframes flowerSway{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(3deg) translateY(-5px)}}
-.butterfly{position:absolute;font-size:22px;opacity:.55;pointer-events:none;animation:butterflyFly 9s ease-in-out infinite}
+.butterfly{position:absolute;width:34px;height:28px;opacity:.82;pointer-events:none;animation:butterflyFly 10s ease-in-out infinite;filter:drop-shadow(0 2px 3px #9b647633)}
+.butterfly i,.butterfly b{position:absolute;display:block;top:2px;width:17px;height:22px;background:linear-gradient(135deg,#f7b8c7,#d77f9a 72%,#b45b7c);border:1px solid #c47b91;transform-origin:100% 80%;border-radius:90% 15% 75% 25%;animation:wingFlap .42s ease-in-out infinite alternate}
+.butterfly i{left:1px;transform:rotate(22deg)}.butterfly b{right:1px;transform:scaleX(-1) rotate(22deg);animation-delay:-.2s}
+.butterfly:after{content:"";position:absolute;width:2px;height:20px;left:16px;top:5px;background:#8e5368;border-radius:3px;transform:rotate(7deg)}
 .butterfly.a{top:16%;left:8%}.butterfly.b{top:54%;right:7%;animation-delay:-3s}.butterfly.c{bottom:12%;left:13%;animation-delay:-6s}
-@keyframes butterflyFly{0%,100%{transform:translate(0,0) rotate(-9deg)}30%{transform:translate(13px,-19px) rotate(8deg)}65%{transform:translate(-5px,-35px) rotate(-3deg)}}
+@keyframes butterflyFly{0%,100%{translate:0 0;rotate:-8deg}25%{translate:24px -20px;rotate:9deg}50%{translate:4px -46px;rotate:-4deg}75%{translate:-16px -22px;rotate:8deg}}
+@keyframes wingFlap{from{scale:1 1;filter:brightness(1)}to{scale:.38 1.03;filter:brightness(1.12)}}
 .details-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0}
 .detail-card{background:rgba(255,250,247,.94);border:1px solid #e9c8cf;border-radius:28px;padding:24px 17px;box-shadow:0 10px 30px #8f52600c}
 .detail-icon{font-size:30px;color:#b77b91}
@@ -96,13 +103,8 @@ textarea{min-height:90px;resize:vertical}
 </head>
 <body>
 <section id="cover" aria-label="Обложка приглашения">
-  <img class="cover-art" src="cover-art.jpg" alt="Сказочная розовая открытка с мишкой и надписью Тушоо той">
+  <video class="cover-video" autoplay muted loop playsinline preload="auto" aria-label="Анимация мишки, приветствующего гостей"><source src="aibiyke-bear-4k.mp4" type="video/mp4"></video>
   <div class="cover-wash"></div>
-  <div class="mascot" aria-hidden="true">
-    <div class="bear-ear left"></div><div class="bear-ear right"></div><div class="bear-bow"></div>
-    <div class="bear-head"><span class="bear-eye one"></span><span class="bear-eye two"></span><span class="bear-muzzle"></span><span class="bear-nose"></span></div>
-    <div class="bear-body"></div><div class="bear-arm"></div>
-  </div>
   <button class="cover-open" id="openInvite">АЧУУ ҮЧҮН БАСЫҢЫЗ <span>✦ АЙБИЙКЕНИН ТУШОО ТОЮ ✦</span></button>
 </section>
 
@@ -110,7 +112,7 @@ textarea{min-height:90px;resize:vertical}
   <div class="paper-texture"></div>
   <main>
     <section class="section intro">
-      <span class="butterfly a" aria-hidden="true">🦋</span><span class="butterfly b" aria-hidden="true">🦋</span><span class="butterfly c" aria-hidden="true">🦋</span>
+      <span class="butterfly a" aria-hidden="true"><i></i><b></b></span><span class="butterfly b" aria-hidden="true"><i></i><b></b></span><span class="butterfly c" aria-hidden="true"><i></i><b></b></span>
       <div class="section-inner reveal">
         <div class="ornament">✦ ♡ ✦</div>
         <div class="eyebrow">Сүйүктүү кызыбыздын майрамы</div>
@@ -126,7 +128,7 @@ textarea{min-height:90px;resize:vertical}
     </section>
 
     <section class="section">
-      <span class="butterfly b" aria-hidden="true">🦋</span>
+      <span class="butterfly b" aria-hidden="true"><i></i><b></b></span>
       <div class="section-inner reveal">
         <div class="eyebrow">Кубанычыбызга күбө болуңуз</div>
         <h2>Бул күндү чогуу белгилейли</h2>
@@ -142,7 +144,7 @@ textarea{min-height:90px;resize:vertical}
     </section>
 
     <section class="section" id="details">
-      <span class="butterfly a" aria-hidden="true">🦋</span>
+      <span class="butterfly a" aria-hidden="true"><i></i><b></b></span>
       <div class="section-inner reveal">
         <div class="eyebrow">Күтөбүз сиздерди</div>
         <h2>Кайда жана качан?</h2>
@@ -202,17 +204,18 @@ textarea{min-height:90px;resize:vertical}
 <button id="musicToggle" class="music-control" type="button" aria-label="Музыканы күйгүзүү же өчүрүү">♫ Музыка</button>
 <div id="ytPlayer" aria-hidden="true" style="position:fixed;width:200px;height:200px;left:-500px;bottom:0;opacity:.001;pointer-events:none;overflow:hidden"></div>
 <script>
-const YOUTUBE_VIDEO_ID = "HpoVxozj5FY";
+const YOUTUBE_VIDEO_ID = "kxEG-YWbpdI";
 const CHORUS_START_SECONDS = 18;
-let playerReady = false, player = null, musicStarted = false, fadeTimer = null;
+let playerReady = false, player = null, musicStarted = false, fadeTimer = null, musicRequested = false;
 function loadYouTube(){
   if(document.getElementById("youtube-api")) return;
   const s=document.createElement("script");s.id="youtube-api";s.src="https://www.youtube.com/iframe_api";document.head.appendChild(s);
   window.onYouTubeIframeAPIReady=function(){
-    player=new YT.Player("ytPlayer",{height:"200",width:"200",videoId:YOUTUBE_VIDEO_ID,playerVars:{autoplay:0,controls:0,disablekb:1,playsinline:1,rel:0,start:CHORUS_START_SECONDS},events:{onReady:()=>{playerReady=true;},onStateChange:e=>{if(e.data===YT.PlayerState.ENDED)musicStarted=false;}}});
+    player=new YT.Player("ytPlayer",{height:"200",width:"200",videoId:YOUTUBE_VIDEO_ID,playerVars:{autoplay:0,controls:0,disablekb:1,playsinline:1,rel:0,start:CHORUS_START_SECONDS},events:{onReady:()=>{playerReady=true;if(musicRequested)startMusic();},onStateChange:e=>{if(e.data===YT.PlayerState.ENDED)musicStarted=false;}}});
   };
 }
 function startMusic(){
+  musicRequested=true;
   loadYouTube();
   if(!playerReady||!player||musicStarted)return;
   try{

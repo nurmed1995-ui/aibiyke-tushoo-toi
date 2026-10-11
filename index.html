@@ -27,7 +27,7 @@ body:after{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;back
 .hero-decor{font-size:clamp(26px,7vw,42px);line-height:1.5;letter-spacing:12px;color:#c6a66c;margin:0 0 8px;text-shadow:0 1px #fff}
 .eyebrow{font-size:10px;font-weight:700;letter-spacing:.23em;text-transform:uppercase;color:#a97783}
 .hero h1{font-family:"Great Vibes",cursive;font-weight:400;font-size:clamp(68px,15vw,105px);line-height:1;margin:14px 0 4px;color:var(--rose-deep)}
-.subtitle{font-family:"Cormorant Garamond",serif;font-size:clamp(32px,7vw,45px);letter-spacing:.04em;font-weight:500;margin:4px 0 18px;color:#6d515b}
+.subtitle{font-family:Manrope,Arial,sans-serif;font-size:clamp(29px,6.5vw,38px);letter-spacing:.015em;font-weight:700;margin:7px 0 20px;color:#624650}
 .intro{font-size:17px;font-weight:600;line-height:1.85;max-width:420px;margin:0 auto}
 .date-line{display:flex;align-items:center;justify-content:center;gap:17px;border-top:1px solid #ddc1c6;border-bottom:1px solid #ddc1c6;padding:16px 14px;margin-top:25px;letter-spacing:.08em;font-size:16px;font-weight:700}
 .date-line strong{font-family:"Cormorant Garamond",serif;font-size:28px;letter-spacing:.08em;font-weight:500;color:var(--rose-deep)}
@@ -60,10 +60,10 @@ section{padding:58px 22px;text-align:center}
 .footer p{font-size:12px;line-height:1.8}
 .fade{animation:rise .8s both}.fade.delay{animation-delay:.12s}
 @keyframes rise{from{opacity:0;transform:translateY(13px)}to{opacity:1;transform:translateY(0)}}
-.cover{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;text-align:center;padding:24px;background:repeating-linear-gradient(90deg,#fffaf7 0 22px,#f9e9eb 22px 29px,#fffaf7 29px 51px);transition:opacity .9s ease,visibility .9s ease}
-.cover:before{content:"";position:absolute;inset:14px;border:1px solid #e4c5cc;pointer-events:none}
+.cover{position:fixed;inset:0;z-index:20;display:flex;align-items:center;justify-content:center;text-align:center;padding:0;background:#fff7f2;transition:opacity 1s ease,visibility 1s ease;cursor:pointer;overflow:hidden}
+.cover:before{content:"";position:absolute;inset:8px;border:1px solid #e4c5cc;pointer-events:none;z-index:2}
 .cover.hidden{opacity:0;visibility:hidden;pointer-events:none}
-.cover-card{max-width:440px;width:100%;position:relative;display:flex;flex-direction:column;align-items:center}
+.cover-card{display:none}.cover-art{display:block;width:100%;height:100%;object-fit:contain;object-position:center;background:#fff7f2}.cover-hit{position:absolute;inset:0;width:100%;height:100%;border:0;background:transparent;cursor:pointer;z-index:3;padding:0}.cover-hit:focus-visible{outline:4px solid #8f465e;outline-offset:-12px}
 .cover-ornament{font-size:clamp(50px,16vw,90px);filter:drop-shadow(0 8px 6px #b87d8c2b);margin-bottom:24px;animation:sealIn 1.1s both}
 .seal{width:140px;height:140px;border-radius:42% 50% 46% 42%;background:radial-gradient(circle at 35% 25%,#c77a8c,#8d334d 63%,#6e253a);box-shadow:inset 0 0 0 5px #8b3c50,inset 0 0 0 8px #b76b7c,0 15px 24px #71334830;display:flex;align-items:center;justify-content:center;color:#f6dce1;font-size:52px;transform:rotate(-7deg);position:relative}
 .seal:after{content:"✿";position:absolute;font-size:53px;color:#f6dce1;transform:rotate(7deg)}
@@ -74,7 +74,7 @@ section{padding:58px 22px;text-align:center}
 @keyframes breathe{0%,100%{opacity:.65;transform:translateY(0)}50%{opacity:1;transform:translateY(-3px)}}
 @keyframes sealIn{from{opacity:0;transform:translateY(10px) scale(.92)}to{opacity:1;transform:translateY(0) scale(1)}}
 .youtube-player{position:fixed;width:200px;height:200px;left:-240px;bottom:0;opacity:.001;pointer-events:none;overflow:hidden}
-@media(max-width:600px){.details{grid-template-columns:1fr;max-width:440px}.detail{padding:22px 16px}.hero{min-height:630px;padding:28px 20px 50px}.hero:before{inset:12px 8px 25px}.hero:after{inset:20px 16px 33px}.details{gap:8px}.detail{padding:18px 7px}.date-line{gap:10px}.rsvp{padding:34px 15px}.cover:before{inset:9px}}
+@media(max-width:600px){.details{grid-template-columns:1fr;max-width:440px}.detail{padding:22px 16px}.hero{min-height:630px;padding:28px 20px 50px}.hero:before{inset:12px 8px 25px}.hero:after{inset:20px 16px 33px}.details{gap:8px}.detail{padding:18px 7px}.date-line{gap:10px}.rsvp{padding:34px 15px}.cover:before{inset:6px}.cover-art{object-fit:contain}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;scroll-behavior:auto!important;transition:none!important}}
 
 .storybook-decor{position:absolute;z-index:0;pointer-events:none;width:clamp(78px,16vw,132px);opacity:.72;filter:drop-shadow(0 5px 7px #a77b8314)}
@@ -90,17 +90,28 @@ section:after{content:"❀";position:absolute;left:5%;bottom:16px;color:#d99eaf;
 .detail p{color:#493d42}
 @media(max-width:600px){.storybook-decor{opacity:.38;width:88px}.decor-left{left:-20px;top:10px}.decor-right{right:-20px;bottom:4px}section:before{right:4%;font-size:20px}section:after{left:3%;font-size:20px}}
 
+
+/* Unified watercolor storybook invitation theme */
+body{background:#fff7f2;scroll-behavior:smooth}
+body:before{background:repeating-linear-gradient(90deg,#fff9f6 0 24px,#f7e5e8 24px 32px,#fff9f6 32px 58px);opacity:.72}
+body:after{background:radial-gradient(ellipse at center,rgba(255,250,247,.9) 0 35%,rgba(255,255,255,.12) 85%),radial-gradient(circle at 12% 20%,#e7c8cf55 0 2px,transparent 3px),radial-gradient(circle at 87% 74%,#e7c8cf55 0 2px,transparent 3px)}
+.page{background:rgba(255,250,247,.84)}
+.hero{background:linear-gradient(180deg,#fff9f5d9,#fff9f5a8);border-radius:48px;margin:12px 10px 20px;}
+section{margin:18px 10px;padding:54px 22px;background:linear-gradient(145deg,rgba(255,250,248,.96),rgba(255,243,242,.91));border:1px solid #ecd1d7;border-radius:34px;box-shadow:0 12px 30px #9d596f0b}
+section:before,section:after{pointer-events:none}
+.rsvp{background:linear-gradient(145deg,#fae9ecf5,#fff7f4f5);border:1px solid #e9c8d0;box-shadow:0 12px 28px #9d596f12}
+.detail,.timebox{background:rgba(255,252,249,.96);box-shadow:0 8px 24px #a96c7b12}
+.footer{background:linear-gradient(180deg,transparent,#f8e8e9a8);border-radius:35px 35px 0 0}
+.reveal{opacity:0;transform:translateY(22px);transition:opacity .85s ease,transform .85s cubic-bezier(.2,.7,.2,1)}
+.reveal.is-visible{opacity:1;transform:translateY(0)}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
 </style>
 </head>
 <body>
-<div class="cover" id="cover">
-  <div class="cover-card">
-    <div class="cover-ornament" aria-hidden="true"><div class="seal">✿</div></div>
-    <div class="cover-title" data-ky="Сүйүктүү кызыбыздын майрамы" data-ru="Праздник нашей любимой дочери">Сүйүктүү кызыбыздын майрамы</div>
-    <div class="cover-name">Айбийке</div>
-    <div class="cover-title" data-ky="Тушоо тойго чакыруу" data-ru="Приглашение на Тушоо той">Тушоо тойго чакыруу</div>
-    <button class="open-button" id="openInvite" type="button"><span>↓</span><span data-ky="Ачуу үчүн басыңыз" data-ru="Нажмите, чтобы открыть">Ачуу үчүн басыңыз</span></button>
-  </div>
+<div class="cover" id="cover" role="button" tabindex="0" aria-label="Ачуу үчүн басыңыз / Нажмите, чтобы открыть приглашение">
+  <img class="cover-art" src="cover-art.jpg" alt="Айбийкенин тушоо тоюна арналган кызгылт ленталуу, гүлдүү жана мишкасы бар чакыруу мукабасы">
+  <button class="cover-hit" id="openInvite" type="button" aria-label="Ачуу үчүн басыңыз / Нажмите, чтобы открыть приглашение"></button>
 </div>
 <div class="youtube-player" id="youtubePlayer"></div>
 <main class="page" id="mainPage">
@@ -217,11 +228,25 @@ function setLang(lang){
   document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
 }
 document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
-document.getElementById('openInvite').addEventListener('click',()=>{
-  document.getElementById('cover').classList.add('hidden');
+function openInvitation(){
+  const cover=document.getElementById('cover');
+  if(cover.classList.contains('hidden')) return;
+  cover.classList.add('hidden');
+  document.body.classList.add('invitation-open');
   if(!hasOpened){fadeMusicIn();}
   hasOpened=true;
-});
+  window.setTimeout(()=>{document.getElementById('mainPage').scrollIntoView({behavior:'smooth',block:'start'});},180);
+}
+document.getElementById('openInvite').addEventListener('click',openInvitation);
+document.getElementById('cover').addEventListener('click',e=>{if(e.target.id!=='openInvite')openInvitation();});
+document.getElementById('cover').addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();openInvitation();}});
+const revealTargets=document.querySelectorAll('.hero, main section, .footer');
+revealTargets.forEach(el=>el.classList.add('reveal'));
+if('IntersectionObserver' in window){
+  const revealObserver=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add('is-visible');revealObserver.unobserve(entry.target);}}),{threshold:.08,rootMargin:'0px 0px -35px 0px'});
+  revealTargets.forEach(el=>revealObserver.observe(el));
+}else{revealTargets.forEach(el=>el.classList.add('is-visible'));}
+
 const eventDate=new Date('2026-11-01T14:00:00+06:00').getTime();
 function tick(){let diff=eventDate-Date.now();if(diff<=0){['days','hours','minutes','seconds'].forEach(id=>document.getElementById(id).textContent='0');return;}document.getElementById('days').textContent=Math.floor(diff/86400000);document.getElementById('hours').textContent=String(Math.floor(diff%86400000/3600000)).padStart(2,'0');document.getElementById('minutes').textContent=String(Math.floor(diff%3600000/60000)).padStart(2,'0');document.getElementById('seconds').textContent=String(Math.floor(diff%60000/1000)).padStart(2,'0');}
 tick();setInterval(tick,1000);

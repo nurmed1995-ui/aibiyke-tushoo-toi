@@ -24,3 +24,6 @@
 - WhatsApp: форма открывает `+996 550 131 995` с готовым сообщением; гость должен нажать «Отправить» внутри WhatsApp.
 
 Я проверил структуру файлов и синтаксис JavaScript, но не могу удалённо гарантировать поведение на каждом телефоне без реального теста на iPhone/Safari и Android/Chrome.
+
+
+Cover update: `cover-image.jpg` is the full-screen first page image. The invitation content and existing behavior are otherwise unchanged.

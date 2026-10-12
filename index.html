@@ -17,8 +17,8 @@ body{margin:0;color:var(--ink);font-family:var(--serif);font-size:22px;font-weig
 button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 #cover{position:fixed;inset:0;z-index:1000;background:#fff8f4;display:grid;place-items:center;overflow:hidden;opacity:1;visibility:visible;transition:opacity 1.2s ease,visibility 1.2s ease,transform 1.2s ease}
 #cover.leaving{opacity:0;visibility:hidden;transform:scale(1.025);pointer-events:none}
-.cover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;background:#fff8f4;z-index:1}
-.cover-vignette{position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,248,244,.01) 35%,rgba(255,248,244,.03) 72%,rgba(255,248,244,.18) 100%)}
+.cover-image{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;background:#fff8f4;z-index:1} .cover-action{position:absolute;inset:0;left:0;bottom:auto;transform:none;width:100%;height:100%;padding:0;border:0;border-radius:0;background:transparent;color:transparent;box-shadow:none;text-align:left;font-size:0;letter-spacing:0;line-height:0;animation:none;backdrop-filter:none;z-index:5} .cover-action small{display:none}
+
 .cover-action{position:absolute;z-index:4;left:50%;bottom:max(5.5vh,calc(env(safe-area-inset-bottom) + 20px));transform:translateX(-50%);width:min(88%,520px);padding:16px 18px 14px;border:1px solid #d8b0bb;border-radius:25px;background:rgba(255,250,246,.96);color:var(--rose-dark);box-shadow:0 12px 34px #78394b20;text-align:center;font-family:var(--serif);font-size:clamp(23px,5.4vw,32px);font-weight:700;letter-spacing:.035em;line-height:1.2;animation:buttonBreathe 3s ease-in-out infinite;backdrop-filter:blur(5px)}
 .cover-action small{display:block;font-size:clamp(13px,3.3vw,16px);letter-spacing:.14em;margin-top:7px}
 @keyframes buttonBreathe{0%,100%{box-shadow:0 10px 28px #78394b16;transform:translateX(-50%) scale(1)}50%{box-shadow:0 14px 38px #78394b30;transform:translateX(-50%) scale(1.018)}}
@@ -85,15 +85,16 @@ button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
 @media(min-width:760px){.section{padding:90px 28px}.details-section{min-height:960px}}
 @media(max-width:480px){body{font-size:20px}.section{padding:52px 8px}.section:before{inset:6px 3px}.frame{width:calc(100% - 14px);padding:30px 16px;border-radius:38% 38% 24px 24px/3% 3% 24px 24px}.details-section{min-height:740px;padding:20px 5px}.details-section .frame{padding:40px 17px;border-radius:34% 34% 32% 32%/7% 7% 7% 7%}.countdown{gap:5px}.time-unit{padding:10px 2px}.scene-floral{background-size:12vw 100%,12vw 100%,auto}.carousel-spot{width:54%}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
+
+/* The artwork itself supplies the visible call-to-action; this transparent hit-area makes the full cover tappable. */
+#cover .cover-action{position:absolute!important;inset:0!important;left:0!important;right:0!important;top:0!important;bottom:0!important;transform:none!important;width:100%!important;height:100%!important;max-width:none!important;margin:0!important;padding:0!important;border:0!important;border-radius:0!important;background:transparent!important;color:transparent!important;box-shadow:none!important;text-align:left!important;font-size:0!important;letter-spacing:0!important;line-height:0!important;animation:none!important;backdrop-filter:none!important;z-index:5!important}
+#cover .cover-action small{display:none!important}
 </style>
 </head>
 <body>
 <div id="cover" aria-label="Обложка приглашения">
-  <video id="bearVideo" class="cover-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="bear-poster.jpg">
-    <source src="aibiyke-bear-4k.mp4" type="video/mp4">
-  </video>
-  <div class="cover-vignette"></div>
-  <button class="cover-action" id="openInvite" type="button">АЧУУ ҮЧҮН БАСЫҢЫЗ<small>✦ АЙБИЙКЕНИН ТУШОО ТОЮ ✦</small></button>
+  <img class="cover-image" src="cover-image.jpg" alt="Айбийкенин Тушоо тоюна чакыруу обложкасы">
+  <button class="cover-action" id="openInvite" type="button" aria-label="Ачуу үчүн басыңыз">АЧУУ ҮЧҮН БАСЫҢЫЗ</button>
 </div>
 <div class="page-wallpaper"></div><div class="page-wash"></div>
 <div id="butterflies" aria-hidden="true">
@@ -174,15 +175,12 @@ function updateCountdown(){const ms=Math.max(0,eventDate-Date.now());document.ge
 updateCountdown();setInterval(updateCountdown,1000);
 const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}}),{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-const cover=document.getElementById('cover'),site=document.getElementById('site'),video=document.getElementById('bearVideo'),backgroundMusic=document.getElementById('backgroundMusic');
-function tryPlayCoverVideo(){try{const p=video.play();if(p&&p.catch)p.catch(()=>{});}catch(e){}}
-// Muted inline MP4 with H.264 Baseline is intended for Safari on iPhone and Chrome on Android.
-window.addEventListener('load',tryPlayCoverVideo);
+const cover=document.getElementById('cover'),site=document.getElementById('site'),backgroundMusic=document.getElementById('backgroundMusic');
+// Static full-screen cover image; all existing invitation behavior remains unchanged.
 try{backgroundMusic.load();}catch(e){}
 document.body.style.overflow='hidden';
 document.getElementById('openInvite').addEventListener('click',()=>{
-  // Both play() calls run directly in the user's tap/click gesture for mobile playback policies.
-  tryPlayCoverVideo();
+  // Start background music directly from the user's tap/click gesture.
   try{backgroundMusic.currentTime=0;const p=backgroundMusic.play();if(p&&p.catch)p.catch(()=>{});}catch(e){}
   cover.classList.add('leaving');site.classList.add('visible');document.getElementById('butterflies').classList.add('on');
   document.body.style.overflow='auto';

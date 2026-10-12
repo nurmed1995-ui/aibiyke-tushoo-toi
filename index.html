@@ -2,269 +2,198 @@
 <html lang="ky">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#faeee9">
-<meta name="description" content="Айбийкенин тушоо тоюна чакыруу">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#fff8f4">
+<meta name="description" content="Айбийкенин Тушоо тоюна чакыруу">
 <title>Айбийке — Тушоо той</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Marck+Script&display=swap" rel="stylesheet">
 <style>
-:root{--paper:#fff8f3;--rose:#a34e68;--rose-dark:#74394d;--rose-soft:#f3d9dc;--ink:#513c43;--gold:#bd9a59;--line:#e9c7c9;--sans:"DM Sans",Arial,sans-serif;--serif:"Playfair Display",Georgia,serif;--script:"Great Vibes",cursive}
+:root{--paper:#fff8f4;--cream:#fffaf6;--rose:#a45470;--rose-dark:#79364f;--pink:#e9c4cd;--gold:#bd9b5e;--ink:#4c343d;--serif:"Cormorant Garamond",Georgia,serif;--script:"Marck Script",cursive}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth;background:var(--paper)}
-body:before{content:"";position:fixed;inset:0;z-index:-1;pointer-events:none;background:url("nursery-pattern.jpg") center top/ min(78vw,390px) auto repeat;opacity:.20}
-.section:after{content:"";position:absolute;z-index:-2;inset:0;pointer-events:none;background-image:url("floral-side-strips.jpg");background-repeat:repeat-y;background-size:76px auto;background-position:left top;opacity:.23}
-.section:nth-of-type(even):after{transform:scaleX(-1)}
-body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);font-size:18px;line-height:1.7;overflow-x:hidden}
-button,a{font:inherit}
-button{cursor:pointer}
-#cover{position:fixed;inset:0;z-index:1000;display:grid;place-items:center;overflow:hidden;background:#f9e6e4;transition:opacity 1.1s ease,visibility 1.1s ease}
-#cover.leaving{opacity:0;visibility:hidden;pointer-events:none}
-.cover-art,.cover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center}.cover-video{z-index:1;background:#fffaf7}
-.cover-wash{position:absolute;z-index:2;inset:0;background:linear-gradient(180deg,rgba(255,245,239,.02),rgba(255,245,239,0) 62%,rgba(255,245,239,.28))}
-.cover-open{position:absolute;z-index:3;left:50%;bottom:max(5vh,calc(env(safe-area-inset-bottom) + 22px));transform:translateX(-50%);width:min(88%,420px);border:1px solid rgba(164,91,111,.45);background:rgba(255,249,245,.94);color:var(--rose-dark);padding:17px 20px;border-radius:18px;box-shadow:0 10px 28px #7d35442b;letter-spacing:.035em;font-family:var(--serif);font-size:clamp(18px,4.8vw,25px);font-weight:700;animation:buttonBreathe 2.7s ease-in-out infinite;backdrop-filter:blur(4px)}
-.cover-open:focus-visible,.btn:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
-.cover-open span{display:block;font-size:12px;letter-spacing:.16em;margin-top:2px;font-weight:600}
-@keyframes buttonBreathe{0%,100%{transform:translateX(-50%) scale(1);box-shadow:0 10px 28px #7d35442b}50%{transform:translateX(-50%) scale(1.025);box-shadow:0 14px 35px #7d35443d}}
-/* CSS bear mascot, animated locally without video or external assets */
-.mascot{position:absolute;width:92px;height:115px;right:5%;top:7%;opacity:.96;filter:drop-shadow(0 5px 7px #875b5030);animation:bearFloat 4s ease-in-out infinite;pointer-events:none}
-.bear-head{position:absolute;left:18px;top:16px;width:58px;height:52px;background:#c99b79;border:2px solid #a87860;border-radius:48% 48% 45% 45%;z-index:2}
-.bear-ear{position:absolute;top:7px;width:25px;height:25px;border-radius:50%;background:#bd8b6b;border:2px solid #a87860}
-.bear-ear.left{left:13px}.bear-ear.right{right:10px}
-.bear-muzzle{position:absolute;left:18px;bottom:7px;width:24px;height:17px;border-radius:50%;background:#f1d8c4}
-.bear-nose{position:absolute;left:28px;bottom:17px;width:8px;height:6px;border-radius:50%;background:#5b3b37}
-.bear-eye{position:absolute;top:22px;width:4px;height:5px;background:#4d3432;border-radius:50%}.bear-eye.one{left:14px}.bear-eye.two{right:14px}
-.bear-body{position:absolute;left:25px;top:63px;width:47px;height:43px;border-radius:45% 45% 40% 40%;background:#c99b79;border:2px solid #a87860}
-.bear-arm{position:absolute;left:58px;top:65px;width:19px;height:34px;border-radius:18px;background:#d5a784;border:2px solid #a87860;transform-origin:top center;animation:wave 1.6s ease-in-out infinite}
-.bear-bow{position:absolute;left:47px;top:12px;width:22px;height:12px;background:#d77e91;clip-path:polygon(0 0,50% 35%,100% 0,84% 100%,50% 60%,16% 100%);transform:rotate(-15deg);z-index:4}
-@keyframes wave{0%,100%{transform:rotate(-12deg)}50%{transform:rotate(48deg)}}
-@keyframes bearFloat{0%,100%{translate:0 0}50%{translate:0 -7px}}
-#site{opacity:0;transform:translateY(18px);transition:opacity 1s ease,transform 1s ease}
-#site.visible{opacity:1;transform:none}
-.paper-texture{position:fixed;inset:0;pointer-events:none;opacity:.16;z-index:0;background-image:radial-gradient(#c38f86 .65px,transparent .65px);background-size:8px 8px;mask-image:linear-gradient(#000,transparent 70%)}
-main{position:relative;z-index:1}
-.section{position:relative;max-width:860px;margin:0 auto;padding:92px 22px;isolation:isolate}
-.section:before{content:"";position:absolute;z-index:-1;inset:18px 12px;border:1px solid rgba(194,132,145,.48);border-radius:48% 48% 42% 42% / 4% 4% 3% 3%;pointer-events:none}
-.section-inner{max-width:660px;margin:0 auto;text-align:center;padding:32px clamp(14px,4vw,40px);background:rgba(255,250,246,.84);border:1px solid #efd8d8;border-radius:48% 48% 34px 34px / 4% 4% 34px 34px;box-shadow:0 15px 50px #9b5d6310}
-.eyebrow{font-size:13px;font-weight:700;letter-spacing:.19em;text-transform:uppercase;color:#9d6374}
-h1,h2,h3{font-family:var(--serif);font-weight:600;line-height:1.18;color:#65434e}
-h1{font-size:clamp(36px,8vw,62px);margin:8px 0 4px}
-h2{font-size:clamp(31px,6.6vw,45px);margin:12px 0 24px}
-h3{font-size:clamp(25px,5vw,32px);margin:12px 0}
-.script-name{font-family:var(--script);font-weight:400;font-size:clamp(62px,13vw,98px);line-height:1.1;color:var(--rose);margin:5px 0}
-p{font-size:clamp(17px,3.8vw,20px);font-weight:500;line-height:1.8;margin:14px 0}
-.ornament{display:flex;justify-content:center;align-items:center;gap:16px;color:var(--gold);margin:16px 0;font-size:24px}
-.ornament:before,.ornament:after{content:"";height:1px;width:54px;background:var(--line)}
-.intro{min-height:94vh;display:grid;place-items:center;padding-top:60px;padding-bottom:65px}
-.intro .section-inner{padding-top:38px;padding-bottom:42px}
-.intro-copy{max-width:540px;margin:22px auto}
-.date-panel{margin:26px auto 0;padding:22px 14px;border-top:1px solid var(--line);border-bottom:1px solid var(--line);max-width:470px}
-.date-big{font-family:var(--serif);font-weight:700;font-size:clamp(27px,6vw,40px);color:var(--rose-dark);line-height:1.3}
-.date-sub{font-size:19px;font-weight:700;margin-top:8px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;background:var(--rose);color:#fffaf7;border:0;border-radius:999px;padding:14px 25px;font-weight:700;text-decoration:none;box-shadow:0 8px 22px #8b40501f;transition:transform .25s,background .25s}
-.btn:hover{transform:translateY(-2px);background:var(--rose-dark)}
-.btn.secondary{background:#fff5f2;color:var(--rose-dark);border:1px solid #d9aeb7;box-shadow:none}
-.flower-corner{position:absolute;width:clamp(62px,12vw,110px);opacity:.72;pointer-events:none;animation:flowerSway 6s ease-in-out infinite}
-.flower-corner.left{left:0;top:22px}.flower-corner.right{right:0;bottom:15px;animation-delay:-3s}
-@keyframes flowerSway{0%,100%{transform:rotate(-2deg) translateY(0)}50%{transform:rotate(3deg) translateY(-5px)}}
-.butterfly{position:absolute;width:34px;height:28px;opacity:.82;pointer-events:none;animation:butterflyFly 10s ease-in-out infinite;filter:drop-shadow(0 2px 3px #9b647633)}
-.butterfly i,.butterfly b{position:absolute;display:block;top:2px;width:17px;height:22px;background:linear-gradient(135deg,#f7b8c7,#d77f9a 72%,#b45b7c);border:1px solid #c47b91;transform-origin:100% 80%;border-radius:90% 15% 75% 25%;animation:wingFlap .42s ease-in-out infinite alternate}
-.butterfly i{left:1px;transform:rotate(22deg)}.butterfly b{right:1px;transform:scaleX(-1) rotate(22deg);animation-delay:-.2s}
-.butterfly:after{content:"";position:absolute;width:2px;height:20px;left:16px;top:5px;background:#8e5368;border-radius:3px;transform:rotate(7deg)}
-.butterfly.a{top:16%;left:8%}.butterfly.b{top:54%;right:7%;animation-delay:-3s}.butterfly.c{bottom:12%;left:13%;animation-delay:-6s}
-@keyframes butterflyFly{0%,100%{translate:0 0;rotate:-8deg}25%{translate:24px -20px;rotate:9deg}50%{translate:4px -46px;rotate:-4deg}75%{translate:-16px -22px;rotate:8deg}}
-@keyframes wingFlap{from{scale:1 1;filter:brightness(1)}to{scale:.38 1.03;filter:brightness(1.12)}}
-.details-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin:26px 0}
-.detail-card{background:rgba(255,250,247,.94);border:1px solid #e9c8cf;border-radius:28px;padding:24px 17px;box-shadow:0 10px 30px #8f52600c}
-.detail-icon{font-size:30px;color:#b77b91}
-.detail-card h3{margin:10px 0;font-size:clamp(23px,4.8vw,30px)}
-.detail-strong{font-size:clamp(20px,4.3vw,25px);font-weight:700;color:#62404c;line-height:1.55}
-.address{font-size:18px;font-weight:600;line-height:1.7}
-.map-frame{width:100%;height:290px;border:0;border-radius:24px;margin-top:20px;box-shadow:0 12px 35px #6e3d4810}
-.countdown{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;max-width:440px;margin:24px auto}
-.count-unit{border:1px solid #e8c6cc;background:#fff9f6;border-radius:18px;padding:12px 4px}
-.count-unit strong{display:block;font-family:var(--serif);font-size:clamp(23px,5vw,32px);color:var(--rose-dark)}
-.count-unit span{font-size:12px;font-weight:700}
-.rsvp-form{max-width:520px;margin:24px auto 0;text-align:left}
-label{display:block;font-weight:700;margin:14px 0 6px}
-input,select,textarea{width:100%;font:inherit;font-size:17px;color:var(--ink);background:#fffdfb;border:1px solid #dcb8c0;border-radius:14px;padding:13px 14px}
-textarea{min-height:90px;resize:vertical}
-.form-actions{display:grid;gap:10px;margin-top:20px}
-.note{font-size:14px;color:#765e64}
-.footer{padding:45px 20px 60px;text-align:center;color:#8d6470;font-family:var(--serif);font-size:19px}
-.reveal{opacity:0;transform:translateY(24px);transition:opacity .85s ease,transform .85s ease}
-.reveal.in-view{opacity:1;transform:none}
-.music-control{position:fixed;right:14px;bottom:14px;z-index:20;border:1px solid #dfb9c1;background:#fff8f4ee;color:var(--rose-dark);border-radius:999px;padding:10px 14px;font-size:14px;font-weight:700;box-shadow:0 6px 20px #7138491a;display:none}
-.music-control.show{display:block}
-@media(max-width:620px){body{font-size:17px}.section{padding:62px 13px}.section:before{inset:9px 4px}.section-inner{padding:26px 17px;border-radius:38% 38% 26px 26px / 3% 3% 26px 26px}.intro{min-height:92svh;padding:36px 12px}.intro .section-inner{padding:32px 18px}.details-grid{grid-template-columns:1fr;gap:12px}.detail-card{padding:21px 17px}.map-frame{height:250px}.mascot{transform:scale(.78);transform-origin:top right;right:2%;top:5%}.cover-open{bottom:max(3vh,calc(env(safe-area-inset-bottom) + 14px))}.section:before{border-radius:38% 38% 26px 26px / 3% 3% 26px 26px}}
+body{margin:0;color:var(--ink);font-family:var(--serif);font-size:22px;font-weight:600;line-height:1.55;background:var(--paper);overflow-x:hidden}
+button,input,select,textarea{font:inherit}button{cursor:pointer}a{color:inherit}
+#cover{position:fixed;inset:0;z-index:1000;background:#fff8f4;display:grid;place-items:center;overflow:hidden;opacity:1;visibility:visible;transition:opacity 1.2s ease,visibility 1.2s ease,transform 1.2s ease}
+#cover.leaving{opacity:0;visibility:hidden;transform:scale(1.025);pointer-events:none}
+.cover-video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center center;background:#fff8f4;z-index:1}
+.cover-vignette{position:absolute;z-index:2;inset:0;pointer-events:none;background:linear-gradient(180deg,rgba(255,248,244,.01) 35%,rgba(255,248,244,.03) 72%,rgba(255,248,244,.18) 100%)}
+.cover-action{position:absolute;z-index:4;left:50%;bottom:max(5.5vh,calc(env(safe-area-inset-bottom) + 20px));transform:translateX(-50%);width:min(88%,520px);padding:16px 18px 14px;border:1px solid #d8b0bb;border-radius:25px;background:rgba(255,250,246,.96);color:var(--rose-dark);box-shadow:0 12px 34px #78394b20;text-align:center;font-family:var(--serif);font-size:clamp(23px,5.4vw,32px);font-weight:700;letter-spacing:.035em;line-height:1.2;animation:buttonBreathe 3s ease-in-out infinite;backdrop-filter:blur(5px)}
+.cover-action small{display:block;font-size:clamp(13px,3.3vw,16px);letter-spacing:.14em;margin-top:7px}
+@keyframes buttonBreathe{0%,100%{box-shadow:0 10px 28px #78394b16;transform:translateX(-50%) scale(1)}50%{box-shadow:0 14px 38px #78394b30;transform:translateX(-50%) scale(1.018)}}
+#site{opacity:0;visibility:hidden;transform:translateY(18px);transition:opacity 1.1s ease,transform 1.1s ease,visibility 1.1s;position:relative}
+#site.visible{opacity:1;visibility:visible;transform:none}
+.page-wallpaper{position:fixed;z-index:-3;inset:0;pointer-events:none;background:url('nursery-wallpaper.jpg') center top/min(100vw,610px) auto repeat-y;opacity:.92}
+.page-wash{position:fixed;z-index:-2;inset:0;background:rgba(255,249,245,.20);pointer-events:none}
+.lang{display:flex;justify-content:flex-end;gap:8px;max-width:850px;margin:0 auto;padding:16px 20px 0;position:relative;z-index:5}
+.lang button{border:1px solid #dcb4bf;border-radius:30px;padding:6px 14px;background:#fffaf6;color:var(--rose-dark);font:700 15px Arial,sans-serif}
+.lang button.active{background:var(--rose-dark);color:#fff}
+.section{position:relative;isolation:isolate;max-width:900px;margin:0 auto;padding:70px 18px;overflow:hidden}
+.section:before{content:"";position:absolute;inset:9px 7px;border:1px solid rgba(190,128,148,.62);border-radius:42% 42% 30px 30px/3% 3% 30px 30px;pointer-events:none;z-index:-1}
+.frame{position:relative;width:calc(100% - 22px);max-width:720px;margin:0 auto;padding:clamp(34px,6vw,58px) clamp(18px,5vw,48px);text-align:center;background:rgba(255,250,247,.94);border:1px solid #e4bdc8;outline:1px solid #f0d9de;outline-offset:5px;border-radius:40% 40% 28px 28px/4% 4% 28px 28px;box-shadow:0 18px 46px #9b54600c;overflow:hidden}
+.eyebrow{font-family:var(--serif);font-size:clamp(14px,3.2vw,17px);font-weight:700;letter-spacing:.14em;line-height:1.6;text-transform:uppercase;color:#96586c}
+.name{font-family:var(--script);font-size:clamp(74px,16vw,112px);line-height:1.05;font-weight:400;color:var(--rose);margin:7px 0 4px}
+.script-title{font-family:var(--script);font-weight:400;font-size:clamp(44px,10vw,68px);line-height:1.16;color:var(--rose-dark);margin:10px 0 20px}
+.serif-title{font-family:var(--script);font-size:clamp(47px,10vw,72px);font-weight:400;line-height:1.10;color:#603a48;margin:15px 0 22px}
+.ornament{display:flex;align-items:center;justify-content:center;gap:14px;color:var(--gold);font-size:28px;margin:8px 0 18px}
+.ornament:before,.ornament:after{content:"";height:1px;width:clamp(35px,12vw,80px);background:#e3bdc6}
+.copy{font-family:var(--serif);font-size:clamp(21px,4.7vw,27px);font-weight:600;line-height:1.58;max-width:600px;margin:22px auto;color:#4e3840}
+.date-band{max-width:560px;margin:28px auto 0;padding:22px 8px 20px;border-top:1px solid #ddb6c0;border-bottom:1px solid #ddb6c0}
+.date-big{font-family:var(--serif);font-size:clamp(32px,7.2vw,47px);font-weight:700;line-height:1.16;color:#783950}
+.date-time{font-family:var(--serif);font-size:clamp(24px,5.5vw,32px);font-weight:700;line-height:1.35;margin-top:10px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;text-decoration:none;background:var(--rose-dark);color:#fff;border:1px solid #b77c8f;border-radius:999px;padding:14px 24px;font-family:var(--serif);font-size:clamp(21px,4.8vw,25px);font-weight:700;box-shadow:0 9px 22px #7f3d521e;transition:transform .3s,background .3s}
+.btn:hover{transform:translateY(-2px);background:#682d44}
+.btn-row{margin-top:28px}
+.scene-paper{background:linear-gradient(rgba(255,249,245,.25),rgba(255,249,245,.25)),url('nursery-wallpaper.jpg') center/cover}
+.scene-floral{background:linear-gradient(rgba(255,250,247,.10),rgba(255,250,247,.10)),url('floral-edge-left.jpg') left top/ min(18vw,125px) 100% repeat-y,url('floral-edge-right.jpg') right top/min(18vw,125px) 100% repeat-y,rgba(255,248,244,.6)}
+.scene-ribbon:after{content:"";position:absolute;inset:0;z-index:-1;background:url('ribbon-edge-left.jpg') left top/ min(12vw,82px) 100% no-repeat,url('ribbon-edge-right.jpg') right top/min(12vw,82px) 100% no-repeat;opacity:.44;pointer-events:none}
+.frame-content{position:relative;z-index:1}
+.carousel-spot{display:block;width:min(58%,290px);max-height:300px;object-fit:contain;margin:0 auto 16px;mix-blend-mode:multiply;filter:drop-shadow(0 6px 7px #9b596012)}
+.bow-spot{width:min(66%,320px);max-height:145px;object-fit:contain;display:block;margin:0 auto 8px;mix-blend-mode:multiply}
+.details-section{min-height:820px;display:grid;place-items:center;padding:44px 10px;background:url('pink-empty-frame.jpg') center/100% 100% no-repeat}
+.details-section:before{display:none}
+.details-section .frame{width:100%;max-width:640px;padding:clamp(45px,8vw,80px) clamp(18px,5vw,45px);background:rgba(255,250,247,.76);border-color:rgba(231,193,201,.45);outline-color:rgba(249,228,231,.5);border-radius:35% 35% 35% 35%/7% 7% 7% 7%;box-shadow:none}
+.detail-block{margin:24px auto;max-width:520px}
+.detail-label{font-family:var(--script);font-size:clamp(34px,7.5vw,48px);line-height:1.12;color:var(--rose-dark);margin-bottom:7px}
+.detail-main{font-family:var(--serif);font-weight:700;font-size:clamp(26px,5.8vw,34px);line-height:1.32;color:#563943}
+.detail-support{font-family:var(--serif);font-weight:600;font-size:clamp(22px,4.9vw,28px);line-height:1.5;margin-top:5px}
+.countdown{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;max-width:500px;margin:28px auto 0}
+.time-unit{border:1px solid #dcb8c1;border-radius:18px;background:rgba(255,250,247,.94);padding:12px 4px}
+.time-unit strong{display:block;font-family:var(--serif);font-size:clamp(27px,6vw,38px);font-weight:700;color:var(--rose-dark);line-height:1.2}
+.time-unit span{font-family:var(--serif);font-size:clamp(13px,3.2vw,17px);font-weight:700;color:#60434b}
+.rsvp-card{position:relative;z-index:1;background:rgba(255,250,247,.96);border:1px solid #e2bac4;border-radius:32px;padding:clamp(28px,5vw,45px) clamp(18px,4vw,40px);max-width:650px;margin:0 auto;box-shadow:0 16px 40px #8e4a5b0e;text-align:center}
+.form{max-width:500px;margin:24px auto 0;text-align:left}
+.form label{display:block;font-family:var(--serif);font-weight:700;font-size:21px;margin:15px 0 6px}
+.form input,.form select,.form textarea{width:100%;border:1px solid #d8aebb;border-radius:14px;background:#fffdfb;color:var(--ink);padding:12px 14px;font-family:var(--serif);font-size:20px}
+.form textarea{min-height:86px;resize:vertical}
+.form .btn{width:100%;margin-top:20px}
+.note{font-family:var(--serif);font-size:17px;line-height:1.45;color:#765a63;margin:14px auto 0}
+.footer{text-align:center;padding:42px 18px 72px;position:relative}
+.footer img{width:min(45%,220px);max-height:130px;object-fit:contain;mix-blend-mode:multiply;margin:0 auto 12px;display:block}
+.footer .script-title{margin:0}
+#butterflies{position:fixed;inset:0;z-index:25;pointer-events:none;overflow:hidden;opacity:0;transition:opacity 1s}
+#butterflies.on{opacity:1}
+.butterfly{position:absolute;left:0;top:var(--top);width:clamp(28px,5vw,48px);height:auto;opacity:.78;filter:drop-shadow(0 2px 2px #764a561c);animation:flight var(--duration) linear var(--delay) infinite;will-change:transform}
+.butterfly svg{width:100%;display:block;overflow:visible}
+.wingL,.wingR{transform-box:fill-box;transform-origin:center;animation:flap .42s ease-in-out infinite alternate}
+.wingR{animation-delay:-.42s}
+.b2{--top:28%;--duration:25s;--delay:-9s;width:35px}.b3{--top:59%;--duration:30s;--delay:-18s;width:43px}.b4{--top:78%;--duration:27s;--delay:-5s;width:31px}.b5{--top:42%;--duration:33s;--delay:-25s;width:39px}
+@keyframes flap{from{transform:scaleX(1)}to{transform:scaleX(.34)}}
+@keyframes flight{0%{transform:translate3d(-14vw,0,0) rotate(-7deg)}18%{transform:translate3d(12vw,-20px,0) rotate(9deg)}36%{transform:translate3d(32vw,22px,0) rotate(-8deg)}54%{transform:translate3d(53vw,-26px,0) rotate(8deg)}72%{transform:translate3d(76vw,16px,0) rotate(-6deg)}100%{transform:translate3d(112vw,-10px,0) rotate(6deg)}}
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .9s ease,transform .9s ease}.reveal.in{opacity:1;transform:none}
+@media(min-width:760px){.section{padding:90px 28px}.details-section{min-height:960px}}
+@media(max-width:480px){body{font-size:20px}.section{padding:52px 8px}.section:before{inset:6px 3px}.frame{width:calc(100% - 14px);padding:30px 16px;border-radius:38% 38% 24px 24px/3% 3% 24px 24px}.details-section{min-height:740px;padding:20px 5px}.details-section .frame{padding:40px 17px;border-radius:34% 34% 32% 32%/7% 7% 7% 7%}.countdown{gap:5px}.time-unit{padding:10px 2px}.scene-floral{background-size:12vw 100%,12vw 100%,auto}.carousel-spot{width:54%}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;animation-iteration-count:1!important;scroll-behavior:auto!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
-<section id="cover" aria-label="Обложка приглашения">
-  <video class="cover-video" autoplay muted loop playsinline preload="auto" aria-label="Анимация мишки, приветствующего гостей"><source src="aibiyke-bear-4k.mp4" type="video/mp4"></video>
-  <div class="cover-wash"></div>
-  <button class="cover-open" id="openInvite">АЧУУ ҮЧҮН БАСЫҢЫЗ <span>✦ АЙБИЙКЕНИН ТУШОО ТОЮ ✦</span></button>
-</section>
-
+<div id="cover" aria-label="Обложка приглашения">
+  <video id="bearVideo" class="cover-video" autoplay muted loop playsinline webkit-playsinline preload="auto" poster="bear-poster.jpg">
+    <source src="aibiyke-bear-4k.mp4" type="video/mp4">
+  </video>
+  <div class="cover-vignette"></div>
+  <button class="cover-action" id="openInvite" type="button">АЧУУ ҮЧҮН БАСЫҢЫЗ<small>✦ АЙБИЙКЕНИН ТУШОО ТОЮ ✦</small></button>
+</div>
+<div class="page-wallpaper"></div><div class="page-wash"></div>
+<div id="butterflies" aria-hidden="true">
+  <div class="butterfly b1" style="--top:14%;--duration:24s;--delay:-4s"><svg viewBox="0 0 100 70"><g class="wingL"><path d="M49 34C35 5 8 3 8 23c0 16 20 21 41 15Z" fill="#f7b5ca" stroke="#a95e7d" stroke-width="2"/><path d="M48 38C29 35 22 59 35 61c10 1 14-11 13-23Z" fill="#f5d0db" stroke="#a95e7d" stroke-width="1.5"/></g><g class="wingR"><path d="M51 34C65 5 92 3 92 23c0 16-20 21-41 15Z" fill="#f7b5ca" stroke="#a95e7d" stroke-width="2"/><path d="M52 38C71 35 78 59 65 61c-10 1-14-11-13-23Z" fill="#f5d0db" stroke="#a95e7d" stroke-width="1.5"/></g><path d="M50 30Q45 45 50 55Q55 45 50 30Z" fill="#87435d"/><path d="M48 31L39 19M52 31L61 19" stroke="#87435d" stroke-width="1.5"/></svg></div>
+  <div class="butterfly b2"><svg viewBox="0 0 100 70"><g class="wingL"><path d="M49 34C35 5 8 3 8 23c0 16 20 21 41 15Z" fill="#d6e9ec" stroke="#719ca5" stroke-width="2"/><path d="M48 38C29 35 22 59 35 61c10 1 14-11 13-23Z" fill="#b8dce1" stroke="#719ca5" stroke-width="1.5"/></g><g class="wingR"><path d="M51 34C65 5 92 3 92 23c0 16-20 21-41 15Z" fill="#d6e9ec" stroke="#719ca5" stroke-width="2"/><path d="M52 38C71 35 78 59 65 61c-10 1-14-11-13-23Z" fill="#b8dce1" stroke="#719ca5" stroke-width="1.5"/></g><path d="M50 30Q45 45 50 55Q55 45 50 30Z" fill="#5b8893"/></svg></div>
+  <div class="butterfly b3"><svg viewBox="0 0 100 70"><g class="wingL"><path d="M49 34C35 5 8 3 8 23c0 16 20 21 41 15Z" fill="#f5d2a8" stroke="#bb8d6e" stroke-width="2"/><path d="M48 38C29 35 22 59 35 61c10 1 14-11 13-23Z" fill="#f7e1cb" stroke="#bb8d6e" stroke-width="1.5"/></g><g class="wingR"><path d="M51 34C65 5 92 3 92 23c0 16-20 21-41 15Z" fill="#f5d2a8" stroke="#bb8d6e" stroke-width="2"/><path d="M52 38C71 35 78 59 65 61c-10 1-14-11-13-23Z" fill="#f7e1cb" stroke="#bb8d6e" stroke-width="1.5"/></g><path d="M50 30Q45 45 50 55Q55 45 50 30Z" fill="#8d5d50"/></svg></div>
+  <div class="butterfly b4"><svg viewBox="0 0 100 70"><g class="wingL"><path d="M49 34C35 5 8 3 8 23c0 16 20 21 41 15Z" fill="#f6c2d1" stroke="#a95e7d" stroke-width="2"/><path d="M48 38C29 35 22 59 35 61c10 1 14-11 13-23Z" fill="#f4dbe3" stroke="#a95e7d" stroke-width="1.5"/></g><g class="wingR"><path d="M51 34C65 5 92 3 92 23c0 16-20 21-41 15Z" fill="#f6c2d1" stroke="#a95e7d" stroke-width="2"/><path d="M52 38C71 35 78 59 65 61c-10 1-14-11-13-23Z" fill="#f4dbe3" stroke="#a95e7d" stroke-width="1.5"/></g><path d="M50 30Q45 45 50 55Q55 45 50 30Z" fill="#87435d"/></svg></div>
+  <div class="butterfly b5"><svg viewBox="0 0 100 70"><g class="wingL"><path d="M49 34C35 5 8 3 8 23c0 16 20 21 41 15Z" fill="#e4d1ef" stroke="#9978ae" stroke-width="2"/><path d="M48 38C29 35 22 59 35 61c10 1 14-11 13-23Z" fill="#eee3f3" stroke="#9978ae" stroke-width="1.5"/></g><g class="wingR"><path d="M51 34C65 5 92 3 92 23c0 16-20 21-41 15Z" fill="#e4d1ef" stroke="#9978ae" stroke-width="2"/><path d="M52 38C71 35 78 59 65 61c-10 1-14-11-13-23Z" fill="#eee3f3" stroke="#9978ae" stroke-width="1.5"/></g><path d="M50 30Q45 45 50 55Q55 45 50 30Z" fill="#7b5c91"/></svg></div>
+</div>
 <div id="site">
-  <div class="paper-texture"></div>
+  <nav class="lang" aria-label="Language"><button class="active" data-lang="ky">КЫР</button><button data-lang="ru">РУС</button></nav>
   <main>
-    <section class="section intro">
-      <span class="butterfly a" aria-hidden="true"><i></i><b></b></span><span class="butterfly b" aria-hidden="true"><i></i><b></b></span><span class="butterfly c" aria-hidden="true"><i></i><b></b></span>
-      <div class="section-inner reveal">
+    <section class="section scene-paper">
+      <div class="frame reveal">
         <div class="ornament">✦ ♡ ✦</div>
-        <div class="eyebrow">Сүйүктүү кызыбыздын майрамы</div>
-        <div class="script-name">Айбийке</div>
-        <h1>Тушоо той</h1>
-        <p class="intro-copy">Кызыбыздын алгачкы кадамдарына арналган кубанычыбызды сиздер менен бөлүшүүгө чакырабыз!</p>
-        <div class="date-panel">
-          <div class="date-big">01 НОЯБРЬ 2026</div>
-          <div class="date-sub">Жекшемби · саат 14:00</div>
-        </div>
-        <p><a class="btn" href="#details">Чакыруу жөнүндө ↓</a></p>
+        <div class="eyebrow" data-ky="Сүйүктүү кызыбыздын майрамы" data-ru="Праздник нашей любимой дочери">Сүйүктүү кызыбыздын майрамы</div>
+        <h1 class="name">Айбийке</h1>
+        <h2 class="serif-title" data-ky="Тушоо той" data-ru="Тушоо той">Тушоо той</h2>
+        <p class="copy" data-ky="Кызыбыздын алгачкы кадамдарына арналган кубанычыбызды сиздер менен бөлүшүүгө чакырабыз!" data-ru="Приглашаем вас разделить нашу радость в честь первых шагов нашей дочери!">Кызыбыздын алгачкы кадамдарына арналган кубанычыбызды сиздер менен бөлүшүүгө чакырабыз!</p>
+        <div class="date-band"><div class="date-big" data-ky="01 НОЯБРЬ 2026" data-ru="01 НОЯБРЯ 2026">01 НОЯБРЬ 2026</div><div class="date-time" data-ky="Жекшемби · саат 14:00" data-ru="Воскресенье · 14:00">Жекшемби · саат 14:00</div></div>
+        <div class="btn-row"><a class="btn" href="#welcome" data-ky="Чакыруу жөнүндө ↓" data-ru="К приглашению ↓">Чакыруу жөнүндө ↓</a></div>
       </div>
     </section>
-
-    <section class="section">
-      <span class="butterfly b" aria-hidden="true"><i></i><b></b></span>
-      <div class="section-inner reveal">
-        <div class="eyebrow">Кубанычыбызга күбө болуңуз</div>
-        <h2>Бул күндү чогуу белгилейли</h2>
-        <p>Тушоо кесүү — наристенин келечектеги жолу байсалдуу, кадамы бекем болсун деген ак тилектин белгиси. Айбийкенин кубанычтуу күнүндө сиздерди жаныбызда көрүүгө кубанычтабыз.</p>
-        <div class="ornament">❀ ✧ ❀</div>
-        <div class="countdown" id="countdown" aria-label="Майрамга калган убакыт">
-          <div class="count-unit"><strong id="days">—</strong><span>күн</span></div>
-          <div class="count-unit"><strong id="hours">—</strong><span>саат</span></div>
-          <div class="count-unit"><strong id="minutes">—</strong><span>мүнөт</span></div>
-          <div class="count-unit"><strong id="seconds">—</strong><span>секунд</span></div>
+    <section class="section scene-floral" id="welcome">
+      <div class="frame reveal">
+        <div class="frame-content">
+          <img class="bow-spot" src="watercolor-bow.jpg" alt="" aria-hidden="true">
+          <div class="eyebrow" data-ky="Кубанычыбызга күбө болуңуз" data-ru="Разделите с нами этот день">Кубанычыбызга күбө болуңуз</div>
+          <h2 class="serif-title" data-ky="Бул күндү чогуу белгилейли" data-ru="Давайте разделим этот день вместе">Бул күндү чогуу белгилейли</h2>
+          <p class="copy" data-ky="Тушоо кесүү — наристенин келечектеги жолу байсалдуу, кадамы бекем болсун деген ак тилектин белгиси. Айбийкенин кубанычтуу күнүндө сиздерди жаныбызда көрүүгө кубанычтабыз." data-ru="Тушоо кесүү — добрый обычай с пожеланием ребёнку счастливого пути и уверенных шагов. Будем рады видеть вас рядом в этот особенный день Айбийке.">Тушоо кесүү — наристенин келечектеги жолу байсалдуу, кадамы бекем болсун деген ак тилектин белгиси. Айбийкенин кубанычтуу күнүндө сиздерди жаныбызда көрүүгө кубанычтабыз.</p>
+          <div class="ornament">❀ ✧ ❀</div>
+          <div class="countdown" aria-live="polite"><div class="time-unit"><strong id="days">—</strong><span data-ky="күн" data-ru="дней">күн</span></div><div class="time-unit"><strong id="hours">—</strong><span data-ky="саат" data-ru="часов">саат</span></div><div class="time-unit"><strong id="minutes">—</strong><span data-ky="мүнөт" data-ru="минут">мүнөт</span></div><div class="time-unit"><strong id="seconds">—</strong><span data-ky="секунд" data-ru="секунд">секунд</span></div></div>
         </div>
       </div>
     </section>
-
-    <section class="section" id="details">
-      <span class="butterfly a" aria-hidden="true"><i></i><b></b></span>
-      <div class="section-inner reveal">
-        <div class="eyebrow">Күтөбүз сиздерди</div>
-        <h2>Кайда жана качан?</h2>
-        <div class="details-grid">
-          <article class="detail-card">
-            <div class="detail-icon">♡</div>
-            <h3>Күнү жана убактысы</h3>
-            <div class="detail-strong">1-ноябрь, 2026-жыл</div>
-            <div class="detail-strong">Саат 14:00</div>
-            <p class="note">Жекшемби · Бишкек убактысы</p>
-          </article>
-          <article class="detail-card">
-            <div class="detail-icon">⌂</div>
-            <h3>Өткөрүлүүчү жай</h3>
-            <div class="detail-strong">ZAMAN</div>
-            <p class="address">Курманжан Датка көчөсү, 321<br>Бишкек</p>
-          </article>
-        </div>
-        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=ZAMAN%2C%20%D0%9A%D1%83%D1%80%D0%BC%D0%B0%D0%BD%D0%B6%D0%B0%D0%BD%20%D0%94%D0%B0%D1%82%D0%BA%D0%B0%20321%2C%20%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA" target="_blank" rel="noopener">Картадан көрүү ↗</a>
+    <section class="section details-section" id="details">
+      <div class="frame reveal">
+        <div class="ornament">♡ ✧ ♡</div>
+        <h2 class="script-title" data-ky="Кайда жана качан?" data-ru="Где и когда?">Кайда жана качан?</h2>
+        <div class="detail-block"><div class="detail-label" data-ky="Күнү жана убактысы" data-ru="Дата и время">Күнү жана убактысы</div><div class="detail-main" data-ky="1-ноябрь, 2026-жыл" data-ru="1 ноября 2026 года">1-ноябрь, 2026-жыл</div><div class="detail-support" data-ky="Жекшемби · саат 14:00" data-ru="Воскресенье · 14:00">Жекшемби · саат 14:00</div></div>
+        <div class="ornament">✿</div>
+        <img class="carousel-spot" src="carousel-illustration.jpg" alt="" aria-hidden="true">
+        <div class="detail-block"><div class="detail-label" data-ky="Өткөрүлүүчү жай" data-ru="Место проведения">Өткөрүлүүчү жай</div><div class="detail-main">ZAMAN</div><div class="detail-support" data-ky="Курманжан Датка көчөсү, 321" data-ru="ул. Курманжан Датка, 321">Курманжан Датка көчөсү, 321</div><div class="detail-support" data-ky="Бишкек" data-ru="Бишкек">Бишкек</div></div>
+        <a class="btn" href="https://www.google.com/maps/search/?api=1&query=ZAMAN%2C%20%D0%9A%D1%83%D1%80%D0%BC%D0%B0%D0%BD%D0%B6%D0%B0%D0%BD%20%D0%94%D0%B0%D1%82%D0%BA%D0%B0%20321%2C%20%D0%91%D0%B8%D1%88%D0%BA%D0%B5%D0%BA" target="_blank" rel="noopener" data-ky="Картадан көрүү ↗" data-ru="Открыть карту ↗">Картадан көрүү ↗</a>
       </div>
     </section>
-
-    <section class="section">
-      <div class="section-inner reveal">
-        <div class="ornament">✿ ♡ ✿</div>
-        <div class="eyebrow">Сиздерди күтөбүз</div>
-        <h2>Келериңизди билдирип коюңуз</h2>
-        <p>Сураныч, катышууңузду төмөнкү форма аркылуу билдирип коюңуз. Жооп WhatsApp аркылуу даяр билдирүү түрүндө ачылат.</p>
-        <form class="rsvp-form" id="rsvpForm">
-          <label for="guestName">Атыңыз</label>
-          <input id="guestName" name="guestName" autocomplete="name" required placeholder="Атыңызды жазыңыз">
-          <label for="attendance">Келесизби?</label>
-          <select id="attendance" name="attendance" required>
-            <option value="Ооба, келем">Ооба, келем</option>
-            <option value="Тилекке каршы, келе албайм">Тилекке каршы, келе албайм</option>
-          </select>
-          <label for="guestCount">Канча адам болосуздар?</label>
-          <select id="guestCount" name="guestCount">
-            <option value="1">1 адам</option><option value="2" selected>2 адам</option><option value="3">3 адам</option><option value="4">4 адам</option><option value="5+">5 же андан көп</option>
-          </select>
-          <label for="guestNote">Кошумча билдирүү (кааласаңыз)</label>
-          <textarea id="guestNote" name="guestNote" placeholder="Кошумча маалымат"></textarea>
-          <div class="form-actions">
-            <button class="btn" type="submit">WhatsApp аркылуу жооп берүү</button>
-          </div>
-          <p class="note">Баскандан кийин WhatsApp ачылат. Билдирүүнү жөнөтүү үчүн WhatsApp ичинде дагы бир жолу «Жөнөтүү» баскычын басыңыз.</p>
+    <section class="section scene-ribbon">
+      <div class="rsvp-card reveal">
+        <img class="carousel-spot" src="teddy-cutout.png" alt="" aria-hidden="true">
+        <div class="eyebrow" data-ky="Сиздерди күтөбүз" data-ru="Будем ждать вас">Сиздерди күтөбүз</div>
+        <h2 class="script-title" data-ky="Келериңизди билдирип коюңуз" data-ru="Подтвердите участие">Келериңизди билдирип коюңуз</h2>
+        <p class="copy" data-ky="Катышууңузду төмөнкү форма аркылуу билдирип коюңуз." data-ru="Пожалуйста, подтвердите участие через форму ниже.">Катышууңузду төмөнкү форма аркылуу билдирип коюңуз.</p>
+        <form class="form" id="rsvpForm">
+          <label for="guestName" data-ky="Атыңыз" data-ru="Ваше имя">Атыңыз</label><input id="guestName" name="guestName" autocomplete="name" required placeholder="Атыңызды жазыңыз" data-placeholder-ky="Атыңызды жазыңыз" data-placeholder-ru="Введите ваше имя">
+          <label for="attendance" data-ky="Келесизби?" data-ru="Вы сможете прийти?">Келесизби?</label><select id="attendance" name="attendance" required><option value="yes" data-ky="Ооба, келем" data-ru="Да, буду">Ооба, келем</option><option value="no" data-ky="Тилекке каршы, келе албайм" data-ru="К сожалению, не смогу">Тилекке каршы, келе албайм</option></select>
+          <label for="guestCount" data-ky="Канча адам болосуздар?" data-ru="Сколько человек придёт?">Канча адам болосуздар?</label><select id="guestCount" name="guestCount"><option value="1" data-ky="1 адам" data-ru="1 человек">1 адам</option><option value="2" selected data-ky="2 адам" data-ru="2 человека">2 адам</option><option value="3" data-ky="3 адам" data-ru="3 человека">3 адам</option><option value="4" data-ky="4 адам" data-ru="4 человека">4 адам</option><option value="5+" data-ky="5 же андан көп" data-ru="5 и более">5 же андан көп</option></select>
+          <label for="guestNote" data-ky="Кошумча билдирүү (кааласаңыз)" data-ru="Дополнительное сообщение (необязательно)">Кошумча билдирүү (кааласаңыз)</label><textarea id="guestNote" name="guestNote" placeholder="Кошумча маалымат" data-placeholder-ky="Кошумча маалымат" data-placeholder-ru="Дополнительная информация"></textarea>
+          <button class="btn" type="submit" data-ky="WhatsApp аркылуу жооп берүү" data-ru="Ответить в WhatsApp">WhatsApp аркылуу жооп берүү</button>
+          <p class="note" data-ky="WhatsApp ачылганда даяр билдирүүнү жөнөтүү үчүн «Жөнөтүү» баскычын басыңыз." data-ru="Когда откроется WhatsApp, нажмите «Отправить», чтобы отправить подготовленное сообщение.">WhatsApp ачылганда даяр билдирүүнү жөнөтүү үчүн «Жөнөтүү» баскычын басыңыз.</p>
         </form>
       </div>
     </section>
-
-    <footer class="footer">
-      <div class="ornament">♡ ✧ ♡</div>
-      Айбийкенин тушоо тоюна<br>Ак тилек менен күтөбүз!
-    </footer>
+    <footer class="footer"><img src="watercolor-bow.jpg" alt="" aria-hidden="true"><h2 class="script-title" data-ky="Ак тилек менен күтөбүз!" data-ru="Будем ждать вас с радостью!">Ак тилек менен күтөбүз!</h2><div data-ky="Айбийкенин Тушоо тою" data-ru="Тушоо той Айбийке">Айбийкенин Тушоо тою</div></footer>
   </main>
 </div>
-<button id="musicToggle" class="music-control" type="button" aria-label="Музыканы күйгүзүү же өчүрүү">♫ Музыка</button>
-<div id="ytPlayer" aria-hidden="true" style="position:fixed;width:200px;height:200px;left:-500px;bottom:0;opacity:.001;pointer-events:none;overflow:hidden"></div>
+<audio id="backgroundMusic" preload="auto" loop><source src="background-music.mp3" type="audio/mpeg"></audio>
 <script>
-const YOUTUBE_VIDEO_ID = "kxEG-YWbpdI";
-const CHORUS_START_SECONDS = 18;
-let playerReady = false, player = null, musicStarted = false, fadeTimer = null, musicRequested = false;
-function loadYouTube(){
-  if(document.getElementById("youtube-api")) return;
-  const s=document.createElement("script");s.id="youtube-api";s.src="https://www.youtube.com/iframe_api";document.head.appendChild(s);
-  window.onYouTubeIframeAPIReady=function(){
-    player=new YT.Player("ytPlayer",{height:"200",width:"200",videoId:YOUTUBE_VIDEO_ID,playerVars:{autoplay:0,controls:0,disablekb:1,playsinline:1,rel:0,start:CHORUS_START_SECONDS},events:{onReady:()=>{playerReady=true;if(musicRequested)startMusic();},onStateChange:e=>{if(e.data===YT.PlayerState.ENDED)musicStarted=false;}}});
-  };
+let currentLang='ky';
+function setLang(lang){
+ currentLang=lang;document.documentElement.lang=lang;
+ document.querySelectorAll('[data-ky][data-ru]').forEach(el=>{if(el.tagName==='OPTION')el.textContent=el.dataset[lang];else el.textContent=el.dataset[lang];});
+ document.querySelectorAll('[data-lang]').forEach(b=>b.classList.toggle('active',b.dataset.lang===lang));
+ document.querySelectorAll('[data-placeholder-ky][data-placeholder-ru]').forEach(el=>el.placeholder=el.dataset[lang==='ky'?'placeholderKy':'placeholderRu']);
 }
-function startMusic(){
-  musicRequested=true;
-  loadYouTube();
-  if(!playerReady||!player||musicStarted)return;
-  try{
-    player.seekTo(CHORUS_START_SECONDS,true);
-    player.setVolume(0);
-    player.playVideo();
-    musicStarted=true;
-    let vol=0;
-    clearInterval(fadeTimer);
-    fadeTimer=setInterval(()=>{vol=Math.min(55,vol+3);try{player.setVolume(vol);}catch(e){}if(vol>=55)clearInterval(fadeTimer);},350);
-    document.getElementById("musicToggle").classList.add("show");
-  }catch(e){}
-}
-document.getElementById("openInvite").addEventListener("click",()=>{
-  const cover=document.getElementById("cover"),site=document.getElementById("site");
-  cover.classList.add("leaving");
-  site.classList.add("visible");
-  document.body.style.overflow="auto";
-  startMusic();
-  setTimeout(()=>{cover.style.display="none";site.querySelector(".intro").scrollIntoView({behavior:"smooth",block:"start"});},900);
-  setTimeout(()=>{document.querySelector(".intro .reveal").classList.add("in-view");},250);
-});
-document.body.style.overflow="hidden";
-document.getElementById("musicToggle").addEventListener("click",()=>{
-  if(!playerReady||!player){loadYouTube();return;}
-  if(player.getPlayerState()===YT.PlayerState.PLAYING){player.pauseVideo();document.getElementById("musicToggle").textContent="♫ Музыка: пауза";}
-  else{player.playVideo();document.getElementById("musicToggle").textContent="♫ Музыка";}
-});
-const eventDate=new Date("2026-11-01T14:00:00+06:00").getTime();
-function updateCountdown(){
-  let d=eventDate-Date.now();if(d<0)d=0;
-  document.getElementById("days").textContent=Math.floor(d/86400000);
-  document.getElementById("hours").textContent=Math.floor(d%86400000/3600000);
-  document.getElementById("minutes").textContent=Math.floor(d%3600000/60000);
-  document.getElementById("seconds").textContent=Math.floor(d%60000/1000);
-}
+document.querySelectorAll('[data-lang]').forEach(b=>b.addEventListener('click',()=>setLang(b.dataset.lang)));
+const eventDate=new Date('2026-11-01T14:00:00+06:00').getTime();
+function updateCountdown(){const ms=Math.max(0,eventDate-Date.now());document.getElementById('days').textContent=Math.floor(ms/86400000);document.getElementById('hours').textContent=String(Math.floor(ms%86400000/3600000)).padStart(2,'0');document.getElementById('minutes').textContent=String(Math.floor(ms%3600000/60000)).padStart(2,'0');document.getElementById('seconds').textContent=String(Math.floor(ms%60000/1000)).padStart(2,'0')}
 updateCountdown();setInterval(updateCountdown,1000);
-const observer=new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("in-view");observer.unobserve(entry.target);}}),{threshold:.14});
-document.querySelectorAll(".reveal").forEach(el=>observer.observe(el));
-document.getElementById("rsvpForm").addEventListener("submit",e=>{
-  e.preventDefault();
-  const name=document.getElementById("guestName").value.trim();
-  const attendance=document.getElementById("attendance").value;
-  const count=document.getElementById("guestCount").value;
-  const note=document.getElementById("guestNote").value.trim();
-  const msg=`Саламатсыздарбы! Айбийкенин тушоо тою боюнча жооп:\nАты: ${name}\nКатышуу: ${attendance}\nАдам саны: ${count}\n${note ? "Кошумча: "+note+"\n" : ""}1-ноябрь 2026-жыл, саат 14:00.`;
-  window.open("https://wa.me/996550131995?text="+encodeURIComponent(msg),"_blank","noopener,noreferrer");
+const observer=new IntersectionObserver(entries=>entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');observer.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+const cover=document.getElementById('cover'),site=document.getElementById('site'),video=document.getElementById('bearVideo'),backgroundMusic=document.getElementById('backgroundMusic');
+function tryPlayCoverVideo(){try{const p=video.play();if(p&&p.catch)p.catch(()=>{});}catch(e){}}
+// Muted inline MP4 with H.264 Baseline is intended for Safari on iPhone and Chrome on Android.
+window.addEventListener('load',tryPlayCoverVideo);
+try{backgroundMusic.load();}catch(e){}
+document.body.style.overflow='hidden';
+document.getElementById('openInvite').addEventListener('click',()=>{
+  // Both play() calls run directly in the user's tap/click gesture for mobile playback policies.
+  tryPlayCoverVideo();
+  try{backgroundMusic.currentTime=0;const p=backgroundMusic.play();if(p&&p.catch)p.catch(()=>{});}catch(e){}
+  cover.classList.add('leaving');site.classList.add('visible');document.getElementById('butterflies').classList.add('on');
+  document.body.style.overflow='auto';
+  setTimeout(()=>{cover.style.display='none';window.scrollTo({top:0,behavior:'auto'});},1250);
 });
-loadYouTube();
+document.getElementById('rsvpForm').addEventListener('submit',e=>{
+ e.preventDefault();
+ const guest=document.getElementById('guestName').value.trim();if(!guest){document.getElementById('guestName').focus();return}
+ const attendance=document.getElementById('attendance').value,count=document.getElementById('guestCount').value,note=document.getElementById('guestNote').value.trim();
+ const msg=currentLang==='ky'?`Айбийкенин тушоо тоюна жооп:\nАты: ${guest}\nКатышуу: ${attendance==='yes'?'Ооба, келем':'Келе албайм'}\nАдам саны: ${count}${note?'\nКошумча: '+note:''}\n1-ноябрь 2026-жыл, саат 14:00.`:`Ответ на приглашение на Тушоо той Айбийке:\nИмя: ${guest}\nУчастие: ${attendance==='yes'?'Буду':'Не смогу прийти'}\nКоличество гостей: ${count}${note?'\nКомментарий: '+note:''}\n1 ноября 2026 года, 14:00.`; 
+ window.location.href='https://wa.me/996550131995?text='+encodeURIComponent(msg);
+});
 </script>
-</body>
-</html>
+</body></html>
